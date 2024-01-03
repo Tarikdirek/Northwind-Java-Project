@@ -5,8 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,14 +30,11 @@ import kodlamaio.northwind.core.utilities.results.ErrorDataResult;
 @RestController
 @RequestMapping("api/users")
 @CrossOrigin
+@AllArgsConstructor
 public class UsersController {
 	private UserService userService;
 	
-	@Autowired
-	public UsersController(UserService userService) {
-		
-		this.userService = userService;
-	}
+
 	
 	@PostMapping("/add")
 	public ResponseEntity<?> add(@Valid @RequestBody User user) {

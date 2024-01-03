@@ -4,6 +4,7 @@ package kodlamaio.northwind.business.concretes;
 import java.util.List;
 
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,15 +21,12 @@ import kodlamaio.northwind.entities.concretes.Product;
 import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 
 @Service
+@AllArgsConstructor
 public class ProductManager implements ProductService {
 
 	private ProductDao productDao;
 	
-	@Autowired
-	public ProductManager(ProductDao productDao) {
 
-		this.productDao = productDao;
-	}
 
 	@Override
 	public DataResult<List<Product>> getAll() {
@@ -55,29 +53,6 @@ public class ProductManager implements ProductService {
 		
 	}
 
-	@Override
-	public DataResult<Product> getByProductNameAndCategoryId(String productName, int categoryId) {
-		
-		var result =productDao.getByProductNameAndCategory(productName,categoryId);
-		
-		return new SuccessDataResult<Product>(result,"Data listelendi");
-		
-	}
-
-	@Override
-	public DataResult<List<Product>> getByProductNameOrCategoryId(String productName, int categoryId) {
-		
-		var result =productDao.getByProductNameOrCategory(productName,categoryId);
-		
-		return new SuccessDataResult<List<Product>>(result,"Data listelendi");
-	}
-
-	@Override
-	public DataResult<List<Product>> getCategoryIdIn(List<Integer> categories) {
-		var result =productDao.getByCategoryIn(categories);
-		
-		return new SuccessDataResult<List<Product>>(result,"Data listelendi");
-	}
 
 	@Override
 	public DataResult<List<Product>> getProductNameContains(String productName) {

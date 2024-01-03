@@ -1,5 +1,6 @@
 package kodlamaio.northwind.business.concretes;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +13,11 @@ import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.northwind.core.utilities.results.SuccessResult;
 
 @Service
+@AllArgsConstructor
 public class UserManager implements UserService {
 
 	private UserDao userDao;
-	
-	@Autowired
-	public UserManager(UserDao userDao) {
-		this.userDao = userDao;
-	}
+
 
 	@Override
 	public Result add(User user) {

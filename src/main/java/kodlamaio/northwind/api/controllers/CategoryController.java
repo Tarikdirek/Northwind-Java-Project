@@ -1,5 +1,6 @@
 package kodlamaio.northwind.api.controllers;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,14 +13,11 @@ import kodlamaio.northwind.entities.concretes.Category;
 @RestController
 @RequestMapping("api/categories")
 @CrossOrigin
+@AllArgsConstructor
 public class CategoryController {
 
 	private CategoryService categoryService;
-	
-	@Autowired
-	public CategoryController(CategoryService categoryService) {
-		this.categoryService = categoryService;
-	}
+
 	
 	public Result add(Category category) {
 		

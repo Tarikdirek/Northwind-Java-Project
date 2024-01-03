@@ -1,5 +1,6 @@
 package kodlamaio.northwind.business.concretes;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,14 +11,10 @@ import kodlamaio.northwind.dataAccess.abstracts.CategoryDao;
 import kodlamaio.northwind.entities.concretes.Category;
 
 @Service
+@AllArgsConstructor
 public class CategoryManager implements CategoryService {
 
 	CategoryDao categoryDao;
-	
-	@Autowired
-	public CategoryManager(CategoryDao categoryDao) {
-		this.categoryDao = categoryDao;
-	}
 
 	@Override
 	public Result add(Category category) {

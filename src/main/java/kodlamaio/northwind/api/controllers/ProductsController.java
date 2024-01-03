@@ -3,7 +3,7 @@ package kodlamaio.northwind.api.controllers;
 import java.util.List;
 
 
-
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,15 +22,12 @@ import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 @RestController
 @RequestMapping("api/products")
 @CrossOrigin
+@AllArgsConstructor
 public class ProductsController {
 
 	private ProductService productService;
 	
-	@Autowired
-	public ProductsController(ProductService productService) {
 
-		this.productService = productService;
-	}
 	
 	@GetMapping("/getall")
 	public DataResult<List<Product>> getAll(){
@@ -52,20 +49,6 @@ public class ProductsController {
 		 return productService.getByProductName(productName);
 	}
 	
-	@GetMapping("/getbyproductnameandcolor")
-	public DataResult <Product> getByProductNameAndCategoryId(@RequestParam String productName,@RequestParam int categoryId){
-		 return productService.getByProductNameAndCategoryId(productName,categoryId);
-	}
-	
-	@GetMapping("/getbyproductnameorcolor")
-	public DataResult<List<Product>> getByProductNameOrCategory(@RequestParam String productName,@RequestParam int categoryId){
-		 return productService.getByProductNameOrCategoryId(productName,categoryId);
-	}
-	
-	@GetMapping("/getcategorybyid")
-	public DataResult<List<Product>> getCategoryIn(@RequestParam List<Integer> categories){
-		 return productService.getCategoryIdIn(categories);
-	}
 	
 	@GetMapping("/getproductnamecontains")
 	public DataResult<List<Product>> getProductNameContains(@RequestParam String productName){
